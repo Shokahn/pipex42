@@ -3,11 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stdevis <stdevis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:22:44 by stdevis           #+#    #+#             */
-/*   Updated: 2025/01/27 19:23:01 by stdevis          ###   ########.fr       */
+/*   Updated: 2025/01/29 21:35:15 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
+
+void ft_error(char *error)
+{
+	write(2, "⛔ ", 5);
+	errno = 1;
+	perror(error);
+	exit(1);
+}

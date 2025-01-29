@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: stdevis <stdevis@student.42.fr>            +#+  +:+       +#+         #
+#    By: root <root@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 19:08:27 by stdevis           #+#    #+#              #
-#    Updated: 2025/01/27 19:15:23 by stdevis          ###   ########.fr        #
+#    Updated: 2025/01/29 22:29:01 by root             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,8 @@ UNDERLINE = \033[4m
 ITALIC = \033[3m
 
 NAME = pipex
-CHECKER = checker
 
-SRC_FILES =  pipex
+SRC_FILES =  pipex utils
 
 
 OBJ_DIR = obj/
@@ -52,16 +51,10 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@echo "📦 $(ITALIC)$(YELLOW)Compiling $< $(RESET)"
 	@cc $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR_BONUS)%.o: $(SRC_DIR_BONUS)%.c
-	@mkdir -p $(OBJ_DIR_BONUS)
-	@echo "📦 $(ITALIC)$(YELLOW)Compiling $< $(RESET)"
-	@cc $(CFLAGS) -c $< -o $@
-
-  	
 $(NAME): $(LIBFT) $(PRINTF) $(OBJ)
 	@echo ""
 	@echo "		🚀 $(BOLD)$(YELLOW)Linking $(NAME)...$(RESET)"
-	@cc $(CFLAGS) $(OBJ) -o $(NAME) -L $(LIBFT_DIR) -L $(PRINTF_DIR) -lft -lftprintf
+	@cc $(CFLAGS) $(FSANITIZE) $(OBJ) -o $(NAME) -L $(LIBFT_DIR) -L $(PRINTF_DIR) -lft -lftprintf
 	@echo ""
 	@echo "	🎉 $(BOLD)$(GREEN)SUCCESS: $(NAME) has been created$(RESET) ✅ "
 	@echo ""
@@ -103,7 +96,8 @@ clean:
 	@$(MAKE) -C $(PRINTF_DIR) clean
 	@$(MAKE) -C $(GNL_DIR) clean
 	@rm -rf $(OBJ_DIR)
-	@rm -rf $(OBJ_DIR_BONUS)
+	@rm -rf outfile
+	@rm -rf infile
 	@echo "💾 $(YELLOW)Cleaning $(NAME) object files$(RESET)"
 	@echo "   ↪️ $(GREEN)$(NAME) object files have been deleted$(RESET)"
 	@echo ""
@@ -117,11 +111,9 @@ fclean: clean
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 	@$(MAKE) -C $(PRINTF_DIR) fclean
 	@$(MAKE) -C $(GNL_DIR) fclean
-	@rm -rf text.txt
 	@echo "💾 $(YELLOW)Cleaning $(NAME)$(RESET)"
 	@echo "   ↪️ $(GREEN)$(NAME) has been deleted$(RESET)"
 	@rm -f $(NAME)
-	@rm -f $(CHECKER)
 	@echo ""
 	@echo "	👉 $(BOLD)$(GREEN)Everything has been cleaned$(RESET) ❎"
 

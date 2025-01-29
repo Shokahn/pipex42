@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stdevis <stdevis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:34:16 by stdevis           #+#    #+#             */
-/*   Updated: 2025/01/27 19:11:01 by stdevis          ###   ########.fr       */
+/*   Updated: 2025/01/29 21:35:04 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <string.h>
 # include <unistd.h>
 # include <sys/wait.h>
+# include <errno.h>
 
+void ft_error(char *error);
 
 #endif
