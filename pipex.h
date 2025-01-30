@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: stdevis <stdevis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:34:16 by stdevis           #+#    #+#             */
-/*   Updated: 2025/01/29 21:35:04 by root             ###   ########.fr       */
+/*   Updated: 2025/01/30 17:14:07 by stdevis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 # define PIPEX_H
 
 # include "libft/headers/libft.h"
+# include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include <unistd.h>
 # include <sys/wait.h>
-# include <errno.h>
+# include <unistd.h>
 
-void ft_error(char *error);
+void	ft_error(char *error);
+void	executing_with_path(char *av, char **envp);
+char	*find_the_path(char *cmd, char **envp);
 
 #endif

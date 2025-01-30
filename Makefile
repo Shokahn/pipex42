@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: root <root@student.42.fr>                  +#+  +:+       +#+         #
+#    By: stdevis <stdevis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 19:08:27 by stdevis           #+#    #+#              #
-#    Updated: 2025/01/29 22:29:01 by root             ###   ########.fr        #
+#    Updated: 2025/01/30 16:32:01 by stdevis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,8 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 $(NAME): $(LIBFT) $(PRINTF) $(OBJ)
 	@echo ""
 	@echo "		🚀 $(BOLD)$(YELLOW)Linking $(NAME)...$(RESET)"
-	@cc $(CFLAGS) $(FSANITIZE) $(OBJ) -o $(NAME) -L $(LIBFT_DIR) -L $(PRINTF_DIR) -lft -lftprintf
+	@cc $(CFLAGS) $(OBJ) -o $(NAME) -L $(LIBFT_DIR) -L $(PRINTF_DIR) -lft -lftprintf
+	@touch infile
 	@echo ""
 	@echo "	🎉 $(BOLD)$(GREEN)SUCCESS: $(NAME) has been created$(RESET) ✅ "
 	@echo ""
