@@ -6,7 +6,7 @@
 /*   By: stdevis <stdevis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:33:58 by stdevis           #+#    #+#             */
-/*   Updated: 2025/01/30 18:31:25 by stdevis          ###   ########.fr       */
+/*   Updated: 2025/01/31 14:53:40 by stdevis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	executing(char *av, char **envp)
 	if (execve(path, cmd, envp) == -1)
 	{
 		ft_free_tab(cmd);
-		ft_error("execve cmd failed\n");
+		ft_perror("execve cmd failed\n");
 	}
 }
 
@@ -45,7 +45,7 @@ void	child(char **av, int *pipe_fd, char **envp)
 
 	infile = open(av[1], O_RDONLY);
 	if (infile == -1)
-		ft_error("reading infile failed\n");
+		ft_perror("reading infile failed\n");
 	dup2(pipe_fd[1], 1);
 	dup2(infile, 0);
 	close(pipe_fd[0]);
@@ -58,7 +58,7 @@ void	parent(char **av, int *pipe_fd, char **envp)
 
 	outfile = open(av[4], O_RDONLY | O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (outfile == -1)
-		ft_error("reading outfile failed\n");
+		ft_perror("reading outfile failed\n");
 	dup2(pipe_fd[0], 0);
 	dup2(outfile, 1);
 	close(pipe_fd[1]);
@@ -77,10 +77,10 @@ int	main(int ac, char **av, char **envp)
 		exit(1);
 	}
 	if (pipe(pipe_fd) == -1)
-		ft_error("pipe fonction failed");
+		ft_perror("pipe fonction failed");
 	pid = fork();
 	if (pid == -1)
-		ft_error("fork fonction failed");
+		ft_perror("fork fonction failed");
 	if (pid == 0)
 		child(av, pipe_fd, envp);
 	waitpid(pid, NULL, 0);

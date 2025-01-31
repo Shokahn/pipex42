@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stdevis <stdevis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 19:22:44 by stdevis           #+#    #+#             */
-/*   Updated: 2025/01/30 18:28:48 by stdevis          ###   ########.fr       */
+/*   Updated: 2025/01/31 14:51:36 by stdevis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
-
-void	ft_error(char *error)
-{
-	ft_putstr_fd("⛔ Error : ", 2);
-	ft_putstr_fd(error, 2);
-	exit(1);
-}
 
 void	executing_with_path(char *av, char **envp)
 {
@@ -28,8 +21,9 @@ void	executing_with_path(char *av, char **envp)
 		ft_error("split1 failed\n");
 	if (execve(cmd[0], cmd, envp) == -1)
 	{
+
 		ft_free_tab(cmd);
-		ft_error("execve cmd failed\n");
+		ft_perror("execve cmd failed\n");
 	}
 }
 
