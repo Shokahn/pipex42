@@ -6,7 +6,7 @@
 #    By: stdevis <stdevis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/27 19:08:27 by stdevis           #+#    #+#              #
-#    Updated: 2025/01/31 14:49:31 by stdevis          ###   ########.fr        #
+#    Updated: 2025/01/31 14:59:13 by stdevis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ ITALIC = \033[3m
 
 NAME = pipex
 
-SRC_FILES =  pipex utils error
+SRC_FILES =  pipex path error
 
 
 OBJ_DIR = obj/

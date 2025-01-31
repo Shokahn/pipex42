@@ -6,7 +6,7 @@
 /*   By: stdevis <stdevis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 17:34:16 by stdevis           #+#    #+#             */
-/*   Updated: 2025/01/30 17:14:07 by stdevis          ###   ########.fr       */
+/*   Updated: 2025/01/31 14:58:55 by stdevis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <unistd.h>
 
 void	ft_error(char *error);
+void	ft_perror(char *error);
 void	executing_with_path(char *av, char **envp);
 char	*find_the_path(char *cmd, char **envp);
 
